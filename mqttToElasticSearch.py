@@ -41,10 +41,10 @@ def on_message(client, userdata, msg):
 
     try:
 	float(msg.payload)
-	es.index(index="my-index6", doc_type="numeric", body={"topic" : msg.topic, "dataFloat" : float(msg.payload), "timestamp": datetime.utcnow()})
+	es.index(index="my-index", doc_type="numeric", body={"topic" : msg.topic, "dataFloat" : float(msg.payload), "timestamp": datetime.utcnow()})
     	
     except:
-	es.index(index="my-index6", doc_type="string", body={"topic" : msg.topic, "dataString" : msg.payload, "timestamp": datetime.utcnow()})
+	es.index(index="my-index", doc_type="string", body={"topic" : msg.topic, "dataString" : msg.payload, "timestamp": datetime.utcnow()})
     
 # by default we connect to elasticSearch on localhost:9200
 es = Elasticsearch()
